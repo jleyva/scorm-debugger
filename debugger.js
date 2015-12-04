@@ -1,5 +1,7 @@
 
 (function() {
+    // Elements table.
+    var elementsTable;
 
     // SCORM API object.
     var API;
@@ -50,8 +52,12 @@
                 } else {
                     description = '';
                 }
-                $('#elementstable tbody').append('<tr><td>'+ element +'</td><td></td><td>' + description + '</td></tr>');
                 value = getElement(element);
+                if (typeof value == "string") {
+                    value = value.replace(/,/g, ", ");
+                }
+
+                elementsTable.row.add([element, value, description]).draw();
             }
         });
     }
@@ -139,8 +145,8 @@
         });
 
         // Load remote elements (this can be slow).
-        loadReadElements();
         elementsTable = $('#elementstable').DataTable({paging: false});
+        loadReadElements();
 
         $("#reload").button({
           icons: {
@@ -149,7 +155,6 @@
         }).on('click', function(e) {
             elementsTable.clear();
             loadReadElements();
-            //elementsTable.order([ 1, 'asc' ]);
         });
 
         $("#show-log").button({
@@ -212,13 +217,14 @@
         });
 
         // Commit action
-        $("#commit-value, #commit-commom, #commit-interactions").on('click', function(e) {
+        $("#commit-value, #commit-common, #commit-interactions").on('click', function(e) {
             commitValues();
         });
 
 
         $("#get-value").on('click', function(e) {
-            dialog.dialog("open");
+            var val =  getElement($("#element").val());
+            $("#debugger-element-value").html("<strong>Value: </strong>" + val);
         });
 
         // Commom operations.
@@ -278,8 +284,10 @@
                 }
             },
         });
+
         $("#create-interactions").on('click', function(e) {
             interactionsDialog.dialog("open");
+            $("#interaction-number").val(getElement("cmi.interactions._count"));
         });
 
         var objectivesDialog = $("#new-objective").dialog({
@@ -304,6 +312,7 @@
         });
         $("#create-objectives").on('click', function(e) {
             objectivesDialog.dialog("open");
+            $("#objective-number").val(getElement("cmi.objectives._count"));
         });
 
     });

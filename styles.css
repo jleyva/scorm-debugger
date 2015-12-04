@@ -14,3 +14,11 @@ label {
 select {
     width: 200px;
 }
+
+.ui-widget {
+    font-size: 80%;
+}
+
+.ui-helper-reset {
+    font-size: 80%;
+}

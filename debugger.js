@@ -60,9 +60,25 @@
                 elementsTable.row.add([element, value, description]).draw();
             }
         });
+        var objectivesCount = getElement("cmi.objectives._count");
+        if (objectivesCount > 0) {
+            for (var i = 0; i < objectivesCount; i++) {
+                var objEl = ["id", "score.raw", "score.min", "score.max", "status"];
+                objEl.forEach(function(child) {
+                    element = "cmi.objectives." + i + "." + child;
+                    value = getElement(element);
+                    if (typeof value == "string") {
+                        value = value.replace(/,/g, ", ");
+                    }
+                    elementsTable.row.add([element, value, ""]).draw();
+                });
+            }
+        }
     }
 
-    function enableSetGetButtons(element) {
+    function displayElementInfo(element) {
+        // Normalize element (replace .X. elements with .n. ones).
+        element = element.replace(/.\d+./,".n.");
         $("#debugger-element-description").html('');
         if (typeof dataModel[element] != 'undefined') {
             var info = "<p><strong>Element information</strong></p>";
@@ -72,23 +88,6 @@
                 info += "<p>Description: " + dataModelDescription[element].description + "</p>";
                 $("#debugger-element-description").html(info);
             }
-
-            if (dataModel[element].mod == 'rw') {
-                $("#set-value").button("enable");
-                $("#commit-value").button("enable");
-                $("#get-value").button("enable");
-            } else if (dataModel[element].mod == 'w') {
-                $("#set-value").button("enable");
-                $("#commit-value").button("enable");
-                $("#get-value").button("disable");
-            } else {
-                $("#set-value").button("disable");
-                $("#commit-value").button("disable");
-                $("#get-value").button("enable");
-            }
-        } else {
-            $("#set-value").button("disable");
-            $("#get-value").button("disable");
         }
     }
 
@@ -173,18 +172,10 @@
         $("#element").autocomplete({
           source: availableElements
         });
-        $("#set-value").button({
-            disabled: true
-        });
-        $("#commit-value").button({
-            disabled: true
-        });
-        $("#get-value").button({
-            disabled: true
-        });
+        $("#set-value, #commit-value, #get-value").button({});
 
         $("#element").on("autocompleteselect", function(event, ui) {
-            enableSetGetButtons($(this).val());
+            displayElementInfo($(this).val());
         });
 
         // Request value dialog.
@@ -275,6 +266,11 @@
                     var i = 0;
                     $("#interaction-objectives").val().split(',').forEach(function (objectiveId) {
                         setElement(prefix + "objectives." + i + ".id", $.trim(objectiveId));
+                        i++;
+                    });
+                    i = 0;
+                    $("#interaction-correct-responses").val().split(',').forEach(function (pattern) {
+                        setElement(prefix + "correct_responses." + i + ".pattern", $.trim(pattern));
                         i++;
                     });
                     interactionsDialog.dialog( "close" );

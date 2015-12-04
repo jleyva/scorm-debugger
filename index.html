@@ -1,0 +1,196 @@
+
+<html>
+    <head>
+        <title>SCORM debugger package</title>
+        <link rel="stylesheet" href="jquery-ui.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="datatables.min.css">
+        <script src="jquery.min.js"></script>
+        <script src="jquery-ui.min.js"></script>
+        <script src="datatables.min.js"></script>
+        <script src="datamodel.js"></script>
+        <script src="debugger.js"></script>
+    </head>
+    <body>
+        <h1>SCORM 1.2 debugger package</h1>
+
+            <div id="options-tabs">
+                <ul>
+                    <li><a href="#remote-data">Stored data</a></li>
+                    <li><a href="#common-operations">Common operations</a></li>
+                    <li><a href="#interactions">Interactions and Objectives</a></li>
+                    <li><a href="#debugger">Debugger</a></li>
+                </ul>
+                <div id="remote-data">
+                <h2>Remote stored data</h2>
+                    <button id="reload">Reload</button> <button id="show-log">Show/Hide log</button>
+                    <table id="elementstable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Value</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div id="common-operations">
+                    <fieldset>
+                        <label for="set-lesson-status">Set lesson status</label>
+                        <select name="set-lesson-status" id="set-lesson-status">
+                          <option value="" selected="selected">-- Select --</option>
+                          <option value="passed">passed</option>
+                          <option value="completed">completed</option>
+                          <option value="failed">failed</option>
+                          <option value="incomplete">incomplete</option>
+                          <option value="browsed">browsed</option>
+                          <option value="not attempted">not attempted</option>
+                        </select>
+
+                        <label for="set-score">Set score</label>
+                        <select name="set-score" id="set-score">
+                          <option value="" selected="selected">-- Select --</option>
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+
+                        <label for="set-exit">Set exit status</label>
+                        <select name="set-exit" id="set-exit">
+                          <option value="" selected="selected">-- Select --</option>
+                          <option value="time-out">time-out</option>
+                          <option value="suspend">suspend</option>
+                          <option value="logout">logout</option>
+                        </select>
+
+                        <label for="set-nav-event">Set nav.event</label>
+                        <select name="set-nav-event" id="set-nav-event">
+                          <option value="" selected="selected">-- Select --</option>
+                          <option value="previous">previous</option>
+                          <option value="continue">continue</option>
+                        </select>
+                    <fieldset>
+                    <br>
+                    <button id="commit-common">Commit changes</button>
+                </div>
+
+                <div id="interactions">
+                    <div class="ui-widget">
+                        <button id="create-interactions">Create interaction</button>
+                    </div>
+                    <br />
+                    <div class="ui-widget">
+                        <button id="create-objectives">Create objective</button>
+                    </div>
+                    <br />
+                    <button id="commit-interactions">Commit changes</button>
+
+                    <div id="new-interaction" title="New interaction">
+                        <fieldset>
+                            <label for="interaction-number">Number:</label>
+                            <input id="interaction-number" type="text" size="20">
+
+                            <label for="interaction-id">id:</label>
+                              <input id="interaction-id" type="text" size="20">
+
+                            <label for="interaction-time">time:</label>
+                              <input id="interaction-time" type="text" size="20">
+
+                            <label for="interaction-type">type:</label>
+                              <select id="interaction-type">
+                                <option value="true-false">true-false</option>
+                                <option value="choices">choices</option>
+                                <option value="fill-in">fill-in</option>
+                                <option value="matching$">matching$</option>
+                                <option value="performance">performance</option>
+                                <option value="sequencing">sequencing</option>
+                                <option value="likert">likert</option>
+                                <option value="numeric">numeric</option>
+                              </select>
+
+                            <label for="interaction-weighting">weighting:</label>
+                              <input id="interaction-weighting" type="text" size="20">
+
+                            <label for="interaction-student_response">student_response:</label>
+                              <input id="interaction-student_response" type="text" size="20">
+
+                            <label for="interaction-result">result:</label>
+                              <input id="interaction-result" type="text" size="20">
+
+                            <label for="interaction-latency">latency:</label>
+                              <input id="interaction-latency" type="text" size="20">
+
+                            <label for="interaction-objectives">objective ids (comma separated):</label>
+                              <input id="interaction-objectives" type="text" size="20">
+                        </fieldset>
+                    </div>
+
+                    <div id="new-objective" title="New objective">
+                        <fieldset>
+                            <label for="objective-number">Number:</label>
+                            <input id="objective-number" type="text" size="20">
+
+                            <label for="objective-id">id:</label>
+                              <input id="objective-id" type="text" size="20">
+
+                            <label for="objective-score-raw">score-raw:</label>
+                              <input id="objective-score-raw" type="text" size="20">
+
+                            <label for="objective-score-min">score-min:</label>
+                              <input id="objective-score-min" type="text" size="20" value="0">
+
+                            <label for="objective-score-max">score-max:</label>
+                              <input id="objective-score-max" type="text" size="20" value="10">
+
+                            <label for="objective-status">status:</label>
+                              <select id="objective-status">
+                                  <option value="" selected="selected">-- Select --</option>
+                                  <option value="passed">passed</option>
+                                  <option value="completed">completed</option>
+                                  <option value="failed">failed</option>
+                                  <option value="incomplete">incomplete</option>
+                                  <option value="browsed">browsed</option>
+                                  <option value="not attempted">not attempted</option>
+                              </select>
+
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div id="debugger">
+                    <div class="ui-widget">
+                      <label for="element">Element name:</label>
+                      <input id="element" size="50">
+                      <button id="get-value">Get value</button> <button id="set-value">Set value</button> <button id="commit-value">Commit</button>
+                    </div>
+                    <div id="debugger-element-description"></div>
+                    <div id="debugger-element-value"></div>
+                </div>
+            </div>
+
+            <div id="requestvalue">
+                <div class="ui-widget">
+                  <label for="element-value">Element value:</label>
+                  <input id="element-value" type="text" size="20">
+                </div>
+            </div>
+
+            <div id="log-dialog" title="Log">
+                <div id="log"></div>
+            </div>
+
+    </body>
+</html>

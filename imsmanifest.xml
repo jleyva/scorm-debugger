@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="SCORMDEbugger555f231e21b982c25d15" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_v1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd" >
+<metadata>
+ <schema>ADL SCORM</schema>
+ <schemaversion>1.2</schemaversion>
+ <adlcp:location>imslrm.xml</adlcp:location>
+</metadata>
+<organizations default="SCORMDEbugger555f231e21b982c25d16">
+  <organization identifier="mm-SCORMDEbugger555f231e21b982c25d16" structure="hierarchical">
+        <title>The organization</title>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s01" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+            <title>The first content (one SCO)</title>
+        </item>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s02" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+            <title>The second content (one SCO too)</title>
+        </item>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s03" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d19">
+            <title>Third content (this is an asset)</title>
+        </item>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s04" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+            <title>SCO with subscoes</title>
+            <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s05" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+                <title>Sub-SCO</title>
+                <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s06" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+                    <title>Sub-Sub-SCO</title>
+                </item>
+            </item>
+        </item>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s07" isvisible="false" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+            <title>SCO not visible</title>
+        </item>
+        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s08" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
+            <title>SCO with prerequisite (first and secon SCO)</title>
+            <adlcp:prerequisites type="aicc_script">mm-ITEM-SCORMDEbugger555f231e21b982c25s01 &amp; mm-ITEM-SCORMDEbugger555f231e21b982c25s02</adlcp:prerequisites>
+        </item>
+  </organization>
+</organizations>
+<resources>
+  <resource identifier="RES-SCORMDEbugger555f231e21b982c25d18" type="webcontent" adlcp:scormtype="sco" href="index.html">
+    <file href="index.html"/>
+  </resource>
+  <resource identifier="RES-SCORMDEbugger555f231e21b982c25d19" type="webcontent" adlcp:scormtype="asset" href="index.html">
+    <file href="index.html"/>
+  </resource>
+</resources>
+</manifest>

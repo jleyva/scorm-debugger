@@ -1,13 +1,17 @@
 # scorm-debugger
-Debugger for SCORM 1.2 Run-Time Environment
+SCORM package including a javascript tool for debugging the LMS SCORM 1.2 Run-Time Environment
 
 ## Main features
-* Retrieve all the elements from the LMS, filter and search for values
-* Perform common operations with one click (set lesson status, score, exit mode...)
-* Retrieve and set any element
-* Create interactions and objectivies easily
-* Element's API properties and description with one click
+* Multiple nested levels of SCOs
+* Includes a SCO configured with pre-requisites
+* Includes a not-visible SCO (isvisible attribute)
+* Debugger: Retrieve all the elements from the LMS, filter and search for values
+* Debugger: Perform common operations with one click (set lesson status, score, exit mode, nav.event ...)
+* Debugger: Retrieve and set any element
+* Debugger: Create interactions and objectivies easily
+* Debugger: View element's API properties and description with one click
 
-## Usage
+## Known issues
 
-Creage a SCORM package with one or more SCORM including this code (for multiple SCOes create separate directories)
+* Most of the resources are not referenced in the imsmanifest.xml file (resources section)
+

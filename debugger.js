@@ -158,6 +158,17 @@
 
     function launchTests() {
         var output = $('#tests-output');
+
+        var interactionsCount = parseInt(API.LMSGetValue('cmi.interactions._count'));
+        var objectivesCount = parseInt(API.LMSGetValue('cmi.objectives._count'));
+
+        if (interactionsCount > 0) {
+            output.append('<p>Interactions tests may fail, you already have ' + interactionsCount + 'stored in the LMS</p>');
+        }
+        if (objectivesCount > 0) {
+            output.append('<p>Objectives tests may fail, you already have ' + objectivesCount + 'stored in the LMS</p>');
+        }
+
         // Get last error.
         if (API.LMSGetLastError() == '0') {
             output.append('<p>Last error OK</p>');
@@ -375,7 +386,7 @@
         });
 
         // Commit action
-        $("#commit-value, #commit-common, #commit-interactions").on('click', function(e) {
+        $("#commit-value, #commit-common, #commit-interactions, #commit-testdata").on('click', function(e) {
             commitValues();
         });
 

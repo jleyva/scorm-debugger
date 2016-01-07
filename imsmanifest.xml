@@ -14,32 +14,10 @@
         <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s02" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
             <title>The second content (one SCO too)</title>
         </item>
-        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s03" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d19">
-            <title>Third content (this is an asset)</title>
-        </item>
-        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s04" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
-            <title>SCO with subscoes</title>
-            <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s05" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
-                <title>Sub-SCO</title>
-                <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s06" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
-                    <title>Sub-Sub-SCO</title>
-                </item>
-            </item>
-        </item>
-        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s07" isvisible="false" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
-            <title>SCO not visible</title>
-        </item>
-        <item identifier="mm-ITEM-SCORMDEbugger555f231e21b982c25s08" isvisible="true" identifierref="RES-SCORMDEbugger555f231e21b982c25d18">
-            <title>SCO with prerequisite (first and secon SCO)</title>
-            <adlcp:prerequisites type="aicc_script">mm-ITEM-SCORMDEbugger555f231e21b982c25s01 &amp; mm-ITEM-SCORMDEbugger555f231e21b982c25s02</adlcp:prerequisites>
-        </item>
   </organization>
 </organizations>
 <resources>
   <resource identifier="RES-SCORMDEbugger555f231e21b982c25d18" type="webcontent" adlcp:scormtype="sco" href="index.html">
-    <file href="index.html"/>
-  </resource>
-  <resource identifier="RES-SCORMDEbugger555f231e21b982c25d19" type="webcontent" adlcp:scormtype="asset" href="index.html">
     <file href="index.html"/>
   </resource>
 </resources>
